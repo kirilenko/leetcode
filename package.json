@@ -1,7 +1,7 @@
 {
   "name": "leetcode",
   "scripts": {
-    "start": "nodemon current/index.ts"
+    "start": "nodemon src/two-sum/index.ts"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
