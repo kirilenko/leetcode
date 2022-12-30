@@ -1,7 +1,7 @@
 {
   "name": "leetcode",
   "scripts": {
-    "start": "nodemon src/two-sum/index.ts"
+    "start": "nodemon src/palindrome-number/index.ts"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",

@@ -1,11 +1,15 @@
 // https://leetcode.com/problems/two-sum/
 
+import comparator, { Case } from '../_common/comparator'
+
+type Args = [number[], number]
+
 /**
  * O(n2) time
  * @param {number[]} nums
  * @param {number} target
  */
-function twoSum0(nums: number[], target: number): number[] {
+function twoSum0(...[nums, target]: Args): number[] {
   const firstCache: number[] = []
   const numsLength = nums.length
 
@@ -39,7 +43,7 @@ function twoSum0(nums: number[], target: number): number[] {
  * @param {number[]} nums
  * @param {number} target
  */
-function twoSum1(nums: number[], target: number): number[] {
+function twoSum1(...[nums, target]: Args): number[] {
   const firstCache: number[] = []
   const numsLength = nums.length
 
@@ -66,7 +70,7 @@ function twoSum1(nums: number[], target: number): number[] {
  * @param {number[]} nums
  * @param {number} target
  */
-function twoSum2(nums: number[], target: number): number[] {
+function twoSum2(...[nums, target]: Args): number[] {
   const numIndexes: Record<number, number[]> = nums.reduce(
     (acc, value, index) => ({
       ...acc,
@@ -101,7 +105,7 @@ function twoSum2(nums: number[], target: number): number[] {
  * @param {number[]} nums
  * @param {number} target
  */
-function twoSum3(nums: number[], target: number): number[] {
+function twoSum3(...[nums, target]: Args): number[] {
   const numIndexes: Record<number, number> = {}
   for (let firstIndex = 0; firstIndex < nums.length; firstIndex++) {
     const secondValue = target - nums[firstIndex]
@@ -115,47 +119,17 @@ function twoSum3(nums: number[], target: number): number[] {
   return []
 }
 
-type Timer = {
-  fnName: string
-  time: number
-}
-
-type Case = {
-  args: [number[], number]
-  description?: string
-  timers: Timer[]
-}
-
-const cases: Case[] = [
+const cases: Case<Args>[] = [
   {
     args: [[3, 2, 4], 6],
-    timers: [],
   },
   {
     args: [[1, 1, 4, 1, 1, 7, 1, 1], 11],
-    timers: [],
   },
   {
     args: [[...Array(1000).keys()], 1999],
-    description: '10000 ordered items',
-    timers: [],
+    description: '1000 ordered items',
   },
 ]
 
-cases.forEach(({ args, description: desc = '', timers }, i) => {
-  console.log(`\nCase ${i}:${desc ? `\n${desc}` : ''}\n`)
-  ;[twoSum0, twoSum1, twoSum2, twoSum3].forEach((fn) => {
-    const tStart = performance.now()
-    fn(...args)
-    const tFinish = performance.now()
-    timers.push({
-      fnName: fn.name,
-      time: tFinish - tStart,
-    })
-  })
-
-  timers.sort((a, b) => a.time - b.time)
-  timers.forEach((timer) => {
-    console.log(`  ${timer.fnName}: ${timer.time}ms`)
-  })
-})
+comparator<Args>({ cases, fns: [twoSum0, twoSum1, twoSum2, twoSum3] })
