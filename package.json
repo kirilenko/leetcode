@@ -1,7 +1,7 @@
 {
   "name": "leetcode",
   "scripts": {
-    "start": "nodemon src/palindrome-number/index.ts"
+    "start": "nodemon src/merge-two-sorted-lists/index.ts"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
