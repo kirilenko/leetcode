@@ -1,8 +1,8 @@
 // https://leetcode.com/problems/add-two-numbers/
 
-import ListNode, { createListNodeFromArray } from '../_common/list-node'
+import ListNode from '../_common/list-node'
 
-const addTwoNumbers = (
+export const addTwoNumbers = (
   list1: ListNode | null,
   list2: ListNode | null,
 ): ListNode | null => {
@@ -21,18 +21,3 @@ const addTwoNumbers = (
 
   return result.next
 }
-
-// const list1: ListNode | null = createListNodeFromArray([2, 4, 3])
-// const list2: ListNode | null = createListNodeFromArray([5, 6, 4])
-//
-// console.log(addTwoNumbers(list1, list2)?.mapToArr() || []) // [7, 0, 8] 342 + 465 = 807
-
-// const list1: ListNode | null = createListNodeFromArray([0])
-// const list2: ListNode | null = createListNodeFromArray([0])
-//
-// console.log(addTwoNumbers(list1, list2)?.mapToArr() || []) // [0]
-
-const list1: ListNode | null = createListNodeFromArray([9, 9, 9, 9, 9, 9, 9])
-const list2: ListNode | null = createListNodeFromArray([9, 9, 9, 9])
-
-console.log(addTwoNumbers(list1, list2)?.mapToArr() || []) // [8, 9, 9, 9, 0, 0, 0, 1]
