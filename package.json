@@ -1,7 +1,7 @@
 {
   "name": "leetcode",
   "scripts": {
-    "start": "nodemon src/merge-two-sorted-lists/index.ts"
+    "start": "nodemon src/add-two-numbers/index.ts"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
