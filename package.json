@@ -1,7 +1,7 @@
 {
   "name": "leetcode",
   "scripts": {
-    "start": "nodemon src/add-two-numbers/index.ts",
+    "start": "nodemon src/longest-common-prefix/compare.ts",
     "test": "jest --watch",
     "coverage": "jest --coverage"
   },
