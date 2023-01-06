@@ -14,27 +14,35 @@ type Fn<Args extends Array<unknown>> = (...args: Args) => unknown
 type Props<Args extends Array<unknown>> = {
   cases: Case<Args>[]
   fns: Fn<Args>[]
+  repeat?: number
 }
 
 const comparator = <Args extends Array<unknown>>(props: Props<Args>): void => {
-  const { cases, fns } = props
+  const { cases, fns, repeat = 10 } = props
 
   cases.forEach(({ args, description: desc = '', timers = [] }, i) => {
     console.log(`\nCase ${i}:${desc ? `\n${desc}` : ''}\n`)
 
     fns.forEach((fn) => {
-      const tStart = performance.now()
-      fn(...args)
-      const tFinish = performance.now()
+      const timeArr: number[] = []
+      for (let j = 0; j < repeat; j++) {
+        const start = performance.now()
+        fn(...args)
+        const end = performance.now()
+        timeArr.push(end - start)
+      }
+
+      const time = timeArr.reduce((acc, cur) => acc + cur, 0) / repeat
       timers.push({
         fnName: fn.name,
-        time: tFinish - tStart,
+        time,
       })
     })
 
     timers.sort((a, b) => a.time - b.time)
     timers.forEach((timer) => {
-      console.log(`  ${timer.fnName}: ${timer.time}ms`)
+      const percent = Math.round((timer.time / timers[0].time) * 100)
+      console.log(`  ${timer.fnName} (${percent}%): ${timer.time}ms`)
     })
   })
 }
