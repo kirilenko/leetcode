@@ -1,7 +1,7 @@
 {
   "name": "leetcode",
   "scripts": {
-    "start": "nodemon src/delete-columns-to-make-sorted/compare.ts",
+    "start": "nodemon src/longest-substring-without-repeating-characters/compare.ts",
     "test": "jest --watch",
     "coverage": "jest --coverage"
   },
