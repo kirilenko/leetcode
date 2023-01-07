@@ -1,4 +1,4 @@
-import { Args, isPalindrome0, isPalindrome1 } from '.'
+import { Args, isPalindrome0, isPalindrome1, isPalindromeBetter } from '.'
 
 type Case = {
   expected: boolean
@@ -22,9 +22,14 @@ const cases: Case[] = [
     id: '3',
     props: [123],
   },
+  {
+    expected: true,
+    id: '4',
+    props: [2147447412],
+  },
 ]
 
-;[isPalindrome0, isPalindrome1].forEach((isPalindrome) => {
+;[isPalindrome0, isPalindrome1, isPalindromeBetter].forEach((isPalindrome) => {
   describe(`palindrome-number.${isPalindrome.name}`, function () {
     cases.forEach(({ expected, id, props }) => {
       it(`should pass case ${id}`, function () {
