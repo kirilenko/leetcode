@@ -1,5 +1,10 @@
 import comparator, { Case } from '../_common/comparator'
-import { Args, longestPalindrome0, longestPalindrome1 } from '.'
+import {
+  Args,
+  longestPalindrome0,
+  longestPalindrome1,
+  longestPalindrome2,
+} from '.'
 
 const cases: Case<Args>[] = [
   { args: ['abaqwer'], description: 'short string with palindrome at start' },
@@ -30,6 +35,6 @@ const cases: Case<Args>[] = [
 
 comparator<Args>({
   cases,
-  fns: [longestPalindrome0, longestPalindrome1],
+  fns: [longestPalindrome0, longestPalindrome1, longestPalindrome2],
   repeat: 3,
 })
