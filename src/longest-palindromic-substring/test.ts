@@ -1,4 +1,10 @@
-import { isPalindrome, longestPalindrome0, Args, longestPalindrome1 } from '.'
+import {
+  isPalindrome,
+  longestPalindrome0,
+  Args,
+  longestPalindrome1,
+  longestPalindrome2,
+} from '.'
 
 describe('longest-palindromic-substring.isPalindrome', () => {
   it('returns true for a palindrome', () => {
@@ -18,9 +24,9 @@ type Case = {
 
 const cases: Case[] = [
   {
-    expected: ['bab', 'aba'], // bab or aba
+    expected: ['a'], // bab or aba
     id: '0',
-    props: ['babad'],
+    props: ['a'],
   },
   {
     expected: ['bb'],
@@ -28,18 +34,28 @@ const cases: Case[] = [
     props: ['cbbd'],
   },
   {
-    expected: ['baab'],
+    expected: ['bab', 'aba'], // bab or aba
     id: '2',
+    props: ['babad'],
+  },
+  {
+    expected: ['baab'],
+    id: '3',
     props: ['babaab'],
   },
   {
     expected: ['qwertyabbaiabbaytrewq'],
-    id: '3',
+    id: '4',
     props: ['qwertyabbaiabbaytrewq'],
+  },
+  {
+    expected: ['a', 'c'],
+    id: '5',
+    props: ['ac'],
   },
 ]
 
-;[longestPalindrome0, longestPalindrome1].forEach((fn) => {
+;[longestPalindrome0, longestPalindrome1, longestPalindrome2].forEach((fn) => {
   describe(`longest-palindromic-substring.${fn.name}`, function () {
     cases.forEach(({ expected, id, props }) => {
       it(`should pass case ${id}`, function () {
