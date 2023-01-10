@@ -1,4 +1,10 @@
-import { Args, isPalindrome0, isPalindrome1, isPalindromeBetter } from '.'
+import {
+  Args,
+  isPalindrome0,
+  isPalindrome1,
+  isPalindrome2,
+  isPalindrome3,
+} from '.'
 
 type Case = {
   expected: boolean
@@ -29,13 +35,15 @@ const cases: Case[] = [
   },
 ]
 
-;[isPalindrome0, isPalindrome1, isPalindromeBetter].forEach((isPalindrome) => {
-  describe(`palindrome-number.${isPalindrome.name}`, function () {
-    cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
-        const result = isPalindrome(...props)
-        expect(result).toEqual(expected)
+;[isPalindrome0, isPalindrome1, isPalindrome2, isPalindrome3].forEach(
+  (isPalindrome) => {
+    describe(`palindrome-number.${isPalindrome.name}`, function () {
+      cases.forEach(({ expected, id, props }) => {
+        it(`should pass case ${id}`, function () {
+          const result = isPalindrome(...props)
+          expect(result).toEqual(expected)
+        })
       })
     })
-  })
-})
+  },
+)
