@@ -16,11 +16,11 @@ const reverse0 = (...[x]: Args): Result => {
 }
 
 const reverse1 = (...[x]: Args) => {
-  const xStr = '' + x
+  const xStr = `${x}`
   let resultStr = xStr[0] === '-' ? '-' : ''
 
-  for (let i = xStr.length - 1; i >= 0; i--) resultStr += xStr[i]
-  const result = parseInt(resultStr)
+  for (let i = xStr.length - 1; i >= 0; i -= 1) resultStr += xStr[i]
+  const result = parseInt(resultStr, 10)
   if (result < -2147483648 || result > 2147483647) return 0
   return result
 }

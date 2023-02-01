@@ -9,12 +9,12 @@ import {
 const cases: Case<Args>[] = [
   { args: ['abaqwer'], description: 'short string with palindrome at start' },
   {
-    args: [new Array(100).fill('qwertyuioplkjhgfdsazxcvbnm').join('') + 'aba'],
+    args: [`${new Array(100).fill('qwertyuioplkjhgfdsazxcvbnm').join('')}aba`],
     description: 'long string with short palindrome at end',
   },
   {
     args: [
-      new Array(100).fill('popqwertyuioplkjhgfdsazxcvbnm').join('') + 'abba',
+      `${new Array(100).fill('popqwertyuioplkjhgfdsazxcvbnm').join('')}abba`,
     ],
     description: 'long string with short palindromes at start and end',
   },

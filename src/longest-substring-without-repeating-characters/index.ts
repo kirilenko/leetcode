@@ -4,10 +4,10 @@ export type Args = [string]
 export function lengthOfLongestSubstring0(...[s]: Args): number {
   let res = 0
 
-  const length = s.length
-  for (let i = 0; i < length; i++) {
+  const { length } = s
+  for (let i = 0; i < length; i += 1) {
     let substring = s[i]
-    for (let j = i + 1; j < length; j++) {
+    for (let j = i + 1; j < length; j += 1) {
       if (substring.includes(s[j])) {
         break
       }
@@ -25,11 +25,11 @@ export function lengthOfLongestSubstring0(...[s]: Args): number {
 export function lengthOfLongestSubstring1(...[s]: Args): number {
   let res = 0
 
-  const length = s.length
+  const { length } = s
   let i = 0
   while (length - i > res) {
     let substring = s[i]
-    for (let j = i + 1; j < length; j++) {
+    for (let j = i + 1; j < length; j += 1) {
       if (substring.includes(s[j])) {
         break
       }
@@ -38,7 +38,7 @@ export function lengthOfLongestSubstring1(...[s]: Args): number {
     }
 
     res = Math.max(res, substring.length)
-    i++
+    i += 1
   }
 
   return res
@@ -57,7 +57,7 @@ export function lengthOfLongestSubstringBetter(s: string): number {
   let left = 0
   let right = 0
   let res = 0
-  const length = s.length
+  const { length } = s
 
   while (right < length) {
     const rightCharCode = s[right].charCodeAt(0)
@@ -69,7 +69,7 @@ export function lengthOfLongestSubstringBetter(s: string): number {
 
     chars[rightCharCode] = right
     res = Math.max(res, right - left + 1)
-    right++
+    right += 1
   }
 
   return res

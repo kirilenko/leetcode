@@ -1,6 +1,6 @@
 import {
-  isPalindrome0,
   Args,
+  isPalindrome0,
   isPalindrome1,
   isPalindrome2,
   isPalindromeBetter,
@@ -72,9 +72,9 @@ const cases: Case[] = [
 
 ;[isPalindrome0, isPalindrome1, isPalindrome2, isPalindromeBetter].forEach(
   (fn) => {
-    describe(`palindrome.${fn.name}`, function () {
+    describe(`palindrome.${fn.name}`, () => {
       cases.forEach(({ expected, id, props }) => {
-        it(`should pass case ${id}`, function () {
+        it(`should pass case ${id}`, () => {
           expect(fn(...props)).toEqual(expected)
         })
       })

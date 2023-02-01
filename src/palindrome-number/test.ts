@@ -37,9 +37,9 @@ const cases: Case[] = [
 
 ;[isPalindrome0, isPalindrome1, isPalindrome2, isPalindrome3].forEach(
   (isPalindrome) => {
-    describe(`palindrome-number.${isPalindrome.name}`, function () {
+    describe(`palindrome-number.${isPalindrome.name}`, () => {
       cases.forEach(({ expected, id, props }) => {
-        it(`should pass case ${id}`, function () {
+        it(`should pass case ${id}`, () => {
           const result = isPalindrome(...props)
           expect(result).toEqual(expected)
         })

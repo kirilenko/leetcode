@@ -44,9 +44,9 @@ const cases: Case[] = [
   lengthOfLongestSubstring1,
   lengthOfLongestSubstringBetter,
 ].forEach((fn) => {
-  describe(`longest-substring-without-repeating-characters.${fn.name}`, function () {
+  describe(`longest-substring-without-repeating-characters.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(fn(...props)).toEqual(expected)
       })
     })

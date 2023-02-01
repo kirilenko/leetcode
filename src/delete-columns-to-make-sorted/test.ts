@@ -37,9 +37,9 @@ const cases: Case[] = [
 ]
 
 ;[minDeletionSize0, minDeletionSize1].forEach((fn) => {
-  describe(`delete-columns-to-make-sorted.${fn.name}`, function () {
+  describe(`delete-columns-to-make-sorted.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(fn(...props)).toEqual(expected)
       })
     })

@@ -54,9 +54,9 @@ const cases: Case[] = [
 ]
 
 fns.forEach((fn) => {
-  describe(`palindrome.${fn.name}`, function () {
+  describe(`palindrome.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(fn(...props).sort()).toEqual(expected.sort())
       })
     })

@@ -21,11 +21,11 @@ const comparator = <Args extends Array<unknown>>(props: Props<Args>): void => {
   const { cases, fns, repeat = 10 } = props
 
   cases.forEach(({ args, description: desc = '', timers = [] }, i) => {
-    console.log(`\nCase ${i}:${desc ? `\n${desc}` : ''}\n`)
+    console.log(`\nCase ${i}:${desc ? `\n${desc}` : ''}\n`) // eslint-disable-line no-console
 
     fns.forEach((fn) => {
       const timeArr: number[] = []
-      for (let j = 0; j < repeat; j++) {
+      for (let j = 0; j < repeat; j += 1) {
         const start = performance.now()
         fn(...args)
         const end = performance.now()
@@ -42,7 +42,7 @@ const comparator = <Args extends Array<unknown>>(props: Props<Args>): void => {
     timers.sort((a, b) => a.time - b.time)
     timers.forEach((timer) => {
       const percent = Math.round((timer.time / timers[0].time) * 100)
-      console.log(`  ${timer.fnName} (${percent}%): ${timer.time}ms`)
+      console.log(`  ${timer.fnName} (${percent}%): ${timer.time}ms`) // eslint-disable-line no-console
     })
   })
 }
