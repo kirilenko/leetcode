@@ -20,9 +20,9 @@ const cases: Case[] = [
 ]
 
 ;[longestCommonPrefix0, longestCommonPrefix1].forEach((fn) => {
-  describe(`longest-common-prefix.${fn.name}`, function () {
+  describe(`longest-common-prefix.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(fn(...props)).toEqual(expected)
       })
     })

@@ -9,14 +9,14 @@ export const twoSum0 = (...[nums, target]: Args): number[] => {
   const firstCache: number[] = []
   const numsLength = nums.length
 
-  for (let first = 0; first < numsLength; first++) {
+  for (let first = 0; first < numsLength; first += 1) {
     if (firstCache.includes(nums[first])) {
       continue
     }
 
     const secondCache: number[] = []
 
-    for (let second = first + 1; second < numsLength; second++) {
+    for (let second = first + 1; second < numsLength; second += 1) {
       if (secondCache.includes(nums[second])) {
         continue
       }
@@ -41,7 +41,7 @@ export const twoSum1 = (...[nums, target]: Args): number[] => {
   const firstCache: number[] = []
   const numsLength = nums.length
 
-  for (let first = 0; first < numsLength; first++) {
+  for (let first = 0; first < numsLength; first += 1) {
     if (firstCache.includes(nums[first])) {
       continue
     }
@@ -74,7 +74,7 @@ export const twoSum2 = (...[nums, target]: Args): number[] => {
   const firstCache: number[] = []
   const numsLength = nums.length
 
-  for (let first = 0; first < numsLength; first++) {
+  for (let first = 0; first < numsLength; first += 1) {
     if (firstCache.includes(nums[first])) {
       continue
     }
@@ -97,7 +97,7 @@ export const twoSum2 = (...[nums, target]: Args): number[] => {
  */
 export const twoSum3 = (...[nums, target]: Args): number[] => {
   const numIndexes: Record<number, number> = {}
-  for (let firstIndex = 0; firstIndex < nums.length; firstIndex++) {
+  for (let firstIndex = 0; firstIndex < nums.length; firstIndex += 1) {
     const secondValue = target - nums[firstIndex]
     if (numIndexes[secondValue] !== undefined) {
       return [firstIndex, numIndexes[secondValue]]

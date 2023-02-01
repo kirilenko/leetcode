@@ -1,4 +1,4 @@
-import { twoSum0, twoSum1, twoSum2, twoSum3, Args } from '.'
+import { Args, twoSum0, twoSum1, twoSum2, twoSum3 } from '.'
 
 type Case = {
   expected: number[]
@@ -25,9 +25,9 @@ const cases: Case[] = [
 ]
 
 ;[twoSum0, twoSum1, twoSum2, twoSum3].forEach((twoSum) => {
-  describe(`two-sum.${twoSum.name}`, function () {
+  describe(`two-sum.${twoSum.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         const result = twoSum(...props)
         expect(result.sort()).toEqual(expected.sort())
       })

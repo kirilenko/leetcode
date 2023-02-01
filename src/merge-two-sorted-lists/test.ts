@@ -28,9 +28,9 @@ const cases: Case[] = [
   },
 ]
 
-describe('merge-two-sorted-lists', function () {
+describe('merge-two-sorted-lists', () => {
   cases.forEach(({ expected, id, props }) => {
-    it(`should pass case ${id}`, function () {
+    it(`should pass case ${id}`, () => {
       const [list1, list2] = props.map(createListNodeFromArray)
       const result = mergeTwoLists(list1, list2)
       expect(result?.mapToArr() || []).toEqual(expected)

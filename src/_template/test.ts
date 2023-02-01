@@ -15,9 +15,9 @@ const cases: Case[] = [
 ]
 
 fns.forEach((fn) => {
-  describe(`task-name.${fn.name}`, function () {
+  describe(`task-name.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(fn(...props)).toEqual(expected)
       })
     })

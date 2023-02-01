@@ -5,9 +5,9 @@ export type Args = [string]
 // It's faster than palindrome1, ..2 for long strings:
 export const isPalindrome0 = (...[rawString]: Args): boolean => {
   const string = rawString.replace(/[^0-9a-z]/gi, '').toLowerCase()
-  const length = string.length
+  const { length } = string
   const lengthHalf = Math.floor(length / 2)
-  for (let i = 0; i <= lengthHalf; i++) {
+  for (let i = 0; i <= lengthHalf; i += 1) {
     if (string[i] !== string[length - 1 - i]) {
       return false
     }
@@ -36,8 +36,8 @@ export const isPalindromeBetter = (...[rawString]: Args): boolean => {
       return false
     }
 
-    i++
-    j--
+    i += 1
+    j -= 1
   }
 
   return true

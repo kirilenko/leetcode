@@ -10,8 +10,8 @@ export const isPalindrome = (s: string): boolean => {
       return false
     }
 
-    i++
-    j--
+    i += 1
+    j -= 1
   }
 
   return true
@@ -20,10 +20,10 @@ export const isPalindrome = (s: string): boolean => {
 // Complexity: O(n3)
 export const longestPalindrome0 = (...[s]: Args): string => {
   let res = ''
-  const length = s.length
+  const { length } = s
 
-  for (let i = 0; i <= length; i++) {
-    for (let j = i + 1; j <= length; j++) {
+  for (let i = 0; i <= length; i += 1) {
+    for (let j = i + 1; j <= length; j += 1) {
       const substring = s.slice(i, j)
       if (isPalindrome(substring) && substring.length > res.length) {
         res = substring
@@ -37,10 +37,10 @@ export const longestPalindrome0 = (...[s]: Args): string => {
 // Complexity: O(n3)
 export const longestPalindrome1 = (...[s]: Args): string => {
   let res = ''
-  const length = s.length
+  const { length } = s
 
-  for (let i = 0; length - i >= res.length; i++) {
-    for (let j = i + 1; j <= length; j++) {
+  for (let i = 0; length - i >= res.length; i += 1) {
+    for (let j = i + 1; j <= length; j += 1) {
       const substring = s.slice(i, j)
       if (isPalindrome(substring) && substring.length > res.length) {
         res = substring
@@ -60,18 +60,18 @@ export const longestPalindrome2 = (...[s]: Args): string => {
   ): number => {
     const strLength = str.length
     while (left >= 0 && right < strLength && str[left] === str[right]) {
-      left--
-      right++
+      left -= 1
+      right += 1
     }
 
     return right - left - 1
   }
 
-  const length = s.length
+  const { length } = s
   let start = 0
   let end = 0
 
-  for (let i = 0; i <= length; i++) {
+  for (let i = 0; i <= length; i += 1) {
     const len1 = expandAroundCenter(s, i, i) // search palindrome w/ odd-numbered length
     const len2 = expandAroundCenter(s, i, i + 1) // ...even-numbered length
     const len = Math.max(len1, len2)

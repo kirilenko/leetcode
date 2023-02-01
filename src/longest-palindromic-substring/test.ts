@@ -1,7 +1,7 @@
 import {
+  Args,
   isPalindrome,
   longestPalindrome0,
-  Args,
   longestPalindrome1,
   longestPalindrome2,
 } from '.'
@@ -56,9 +56,9 @@ const cases: Case[] = [
 ]
 
 ;[longestPalindrome0, longestPalindrome1, longestPalindrome2].forEach((fn) => {
-  describe(`longest-palindromic-substring.${fn.name}`, function () {
+  describe(`longest-palindromic-substring.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(expected).toContain(fn(...props))
       })
     })

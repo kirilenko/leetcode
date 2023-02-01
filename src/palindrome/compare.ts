@@ -15,7 +15,7 @@ const cases: Case<Args>[] = [
   },
   {
     args: [
-      new Array(100).fill('abcd efghijklmn opqrstuv wxyz ').join('') + 'abba',
+      `${new Array(100).fill('abcd efghijklmn opqrstuv wxyz ').join('')}abba`,
     ],
     description: 'long palindromes w/ spaces',
   },

@@ -31,9 +31,9 @@ const cases: Case[] = [
   },
 ]
 
-describe('add-two-numbers', function () {
+describe('add-two-numbers', () => {
   cases.forEach(({ expected, id, props }) => {
-    it(`should pass case ${id}`, function () {
+    it(`should pass case ${id}`, () => {
       const [list1, list2] = props.map(createListNodeFromArray)
       const result = addTwoNumbers(list1, list2)
       expect(result?.mapToArr() || []).toEqual(expected)

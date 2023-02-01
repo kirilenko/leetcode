@@ -1,4 +1,4 @@
-import { isValid0, Args } from '.'
+import { Args, isValid0 } from '.'
 
 type Case = {
   expected: boolean
@@ -35,9 +35,9 @@ const cases: Case[] = [
 ]
 
 ;[isValid0].forEach((fn) => {
-  describe(`valid-parentheses.${fn.name}`, function () {
+  describe(`valid-parentheses.${fn.name}`, () => {
     cases.forEach(({ expected, id, props }) => {
-      it(`should pass case ${id}`, function () {
+      it(`should pass case ${id}`, () => {
         expect(fn(...props)).toEqual(expected)
       })
     })

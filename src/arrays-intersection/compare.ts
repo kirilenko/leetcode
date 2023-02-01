@@ -18,7 +18,10 @@ const cases: Case<Args>[] = [
     description: 'one array is reversed the other one, both are long',
   },
   {
-    args: [[...Array(1000).keys()], [...Array(1000).keys()].map((n) => -++n)],
+    args: [
+      [...Array(1000).keys()],
+      [...Array(1000).keys()].map((n) => -(n + 1)),
+    ],
     description: "both arrays are long and haven't common elements",
   },
   {

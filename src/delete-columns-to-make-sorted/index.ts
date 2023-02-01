@@ -9,10 +9,10 @@ export type Args = [string[]]
 export const minDeletionSize0 = (...[strs]: Args): number => {
   let countForRemove = 0
   const lengthOfEachString = strs[0].length
-  for (let i = 0; i < lengthOfEachString; i++) {
+  for (let i = 0; i < lengthOfEachString; i += 1) {
     const col: string[] = strs.map((str) => str[i])
     if (col.join('') !== col.sort().join('')) {
-      countForRemove++
+      countForRemove += 1
     }
   }
 
@@ -23,11 +23,11 @@ export const minDeletionSize1 = (...[strs]: Args): number => {
   let countForRemove = 0
   const lengthOfEachString = strs[0].length
   const countOfStrings = strs.length
-  for (let i = 0; i < lengthOfEachString; i++) {
+  for (let i = 0; i < lengthOfEachString; i += 1) {
     const col: string[] = strs.map((str) => str[i])
-    for (let j = 1; j < countOfStrings; j++) {
+    for (let j = 1; j < countOfStrings; j += 1) {
       if (col[j] < col[j - 1]) {
-        countForRemove++
+        countForRemove += 1
         break
       }
     }

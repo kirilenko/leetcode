@@ -22,14 +22,15 @@ const intersect1 = (...[nums1, nums2]: Args): number[] => {
 
   const result: number[] = []
 
-  for (const num in nums1Dict) {
+  Object.keys(nums1Dict).forEach((key) => {
+    const num = +key
     if (nums2Dict[num]) {
       const count = Math.min(nums1Dict[num], nums2Dict[num])
-      for (let i = 0; i < count; i++) {
-        result.push(+num)
+      for (let i = 0; i < count; i += 1) {
+        result.push(num)
       }
     }
-  }
+  })
 
   return result
 }
@@ -40,17 +41,17 @@ const intersectBetter = (...[nums1, nums2]: Args): number[] => {
   const map = new Map<number, number>()
   const result: number[] = []
 
-  for (const num of nums1) {
+  nums1.forEach((num) => {
     map.set(num, (map.get(num) || 0) + 1)
-  }
+  })
 
-  for (const num of nums2) {
+  nums2.forEach((num) => {
     const count = map.get(num) || 0
     if (count) {
       result.push(num)
       map.set(num, count - 1)
     }
-  }
+  })
 
   return result
 }
