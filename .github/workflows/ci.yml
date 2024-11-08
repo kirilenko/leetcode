@@ -1,4 +1,4 @@
-name: Testing
+name: Test
 
 on:
   push:
@@ -10,25 +10,55 @@ on:
       - dev
 
 jobs:
-  test:
-    name: Testing
+  branch:
+    name: Get branch name
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Extract Branch Name by Push
+        if: github.event_name != 'pull_request'
+        run: |
+          BRANCH_NAME=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Extract Branch Name by PR
+        if: github.event_name == 'pull_request'
+        run: |
+          BRANCH_NAME=${GITHUB_BASE_REF:-${GITHUB_HEAD_REF}}
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+    outputs:
+      branch_name: ${{ env.BRANCH_NAME }}
+
+  build:
+    needs:
+      - branch
+
+    name: Install dependencies, testing and build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18 # - get from package.json: engines.node
+          node-version: 22 # - get from package.json: engines.node
           registry-url: 'https://registry.npmjs.org'
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8 # - get from package.json: engines.pnpm
+          version: 9 # - get from package.json: engines.pnpm
           run_install: false
 
       - name: Get pnpm store directory
@@ -37,7 +67,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -49,4 +79,4 @@ jobs:
         run: node -v && pnpm -v && pnpm install --frozen-lockfile
 
       - name: Test
-        run: npm run test:ci
+        run: pnpm test:ci
