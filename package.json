@@ -4,17 +4,13 @@
   "version": "0.0.0",
   "author": "Kirilenko",
   "license": "MIT",
-  "engines": {
-    "node": "18",
-    "pnpm": "8"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirilenko/leetcode.git"
   },
   "scripts": {
     "setup": "./scripts/nvm-use.sh && pnpm i",
-    "start": "nodemon src/reverse-integer/compare.ts",
+    "start": "nodemon src/car-numbers/index.ts",
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "coverage": "jest --coverage",
